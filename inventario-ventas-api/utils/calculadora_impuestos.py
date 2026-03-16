@@ -1,13 +1,13 @@
-# DEFECTO: Nombres de variables poco descriptivos (Mantenibilidad)
-def calc_imp(s, d=0):
-    t = 0.12
-    x = s - (s * d)
-    z = x * t
-    r = x + z
-    return r, z, x
+"""
+Módulo para el cálculo de impuestos y totales de facturación.
+"""
 
-# DEFECTO: Dead code
-def calc_desc_esp(m):
-    if m > 1000:
-        return 0.10
-    return 0.05
+def calcular_total(subtotal: float, descuento: float = 0.0) -> float:
+    """
+    Calcula el total a pagar aplicando un descuento al subtotal y sumando el IVA (12%).
+    """
+    tasa_iva = 0.12
+    subtotal_con_descuento = subtotal - descuento
+    iva = subtotal_con_descuento * tasa_iva
+    total = subtotal_con_descuento + iva
+    return total
