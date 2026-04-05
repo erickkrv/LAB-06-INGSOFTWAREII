@@ -10,7 +10,7 @@ def test_calcular_total_con_descuento():
     # Prueba 2: Verifica que el descuento se aplique ANTES del cálculo del IVA
     resultado = calcular_total(subtotal=100.0, descuento=20.0)
     # Subtotal con descuento = 80. IVA de 80 = 9.6. Total = 89.6
-    assert resultado == 999.0 #FALLA INTENCIONAL: valor incorrecto
+    assert resultado == 89.6
 
 def test_calcular_total_solo_iva():
     # Prueba 3: Verifica que el IVA se calcule correctamente sin descuentos aplicados
