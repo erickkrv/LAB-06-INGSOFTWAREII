@@ -59,11 +59,7 @@ def check_already_applied(cursor):
 
 
 def transform_nombre(nombre_completo):
-    """
-    Transforma 'nombre_completo' en (nombre, apellido).
-    Estrategia: la primera palabra es nombre, el resto es apellido.
-    Si solo hay una palabra, apellido queda vacío.
-    """
+  
     if not nombre_completo or not nombre_completo.strip():
         return ("Sin nombre", "")
     partes = nombre_completo.strip().split(" ", 1)
@@ -77,7 +73,7 @@ def migrate(db_path):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
-    try:
+    try
         if check_already_applied(cursor):
             print(f"[SKIP] Migración {MIGRATION_ID} ya fue aplicada.")
             return True
@@ -281,13 +277,6 @@ def migrate(db_path):
 
 
 def rollback(db_path):
-    """
-    Revierte la migración v1.2.0.
-    
-    NOTA: La reversión del campo 'nombre' de usuarios es PARCIAL.
-    Se restaura desde la tabla de backup '_backup_usuarios_v1_2_0'.
-    Si el backup no existe, se concatenan nombre + apellido.
-    """
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
