@@ -145,7 +145,7 @@ def rollback(db_path):
 
         # Revertir inventarios: quitar stock_minimo
         cursor.execute("""
-            CREATE TABLE inventarios_backup AS 
+            CREATE TABLE inventarios_backup AS _
             SELECT id, producto_id, cantidad, ubicacion FROM inventarios
         """)
         cursor.execute("DROP TABLE inventarios")
